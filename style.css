@@ -1,0 +1,28 @@
+body {
+  background-color: rgb(190, 197, 204);
+}
+
+.container {
+  background-color: rgb(70, 66, 66);
+  padding: 20px;
+}
+
+.columns {
+  margin: 0 !important; /* TRATAR DE EVITAR ESTE IMPORTANT SI HAY TIEMPO */
+}
+
+.containerCarrito {
+  color: white;
+}
+thead {
+  color: white;
+}
+tbody {
+  color: white;
+}
+.carousel-inner img {
+  max-width: 100%;
+  height: 400px;
+  margin-top: 30px;
+  border: solid 3px;
+}
