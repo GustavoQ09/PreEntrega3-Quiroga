@@ -87,3 +87,124 @@ document.addEventListener("DOMContentLoaded", function () {
     body.style.backgroundColor = randomColor;
   });
 });
+
+const ripCurlWatches = [
+  {
+    id: 1,
+    name: "Reloj Casio G-Shock - Azul",
+    price: 240,
+  },
+  {
+    id: 2,
+    name: "Reloj Casio G-Shock - Blanco",
+    price: 235,
+  },
+  {
+    id: 3,
+    name: "Reloj Casio G-Shock - Gris",
+    price: 310,
+  },
+  {
+    id: 4,
+    name: "Reloj Casio G-Shock - Negro",
+    price: 280,
+  },
+  {
+    id: 5,
+    name: "Reloj Casio G-Shock - Rojo",
+    price: 280,
+  },
+  {
+    id: 6,
+    name: "Reloj Casio G-Shock - Rosa",
+    price: 240,
+  },
+  {
+    id: 7,
+    name: "Rip Curl Cambridge Sil.",
+    price: 155,
+  },
+  {
+    id: 8,
+    name: "Rip Curl Detroit Gunmetal",
+    price: 290,
+  },
+  {
+    id: 9,
+    name: "Rip Curl Search GPS Series",
+    price: 520,
+  },
+];
+
+const newWatch = {
+  id: 4,
+  name: "Rip Curl Classic Black",
+  price: 175,
+};
+
+ripCurlWatches.push(newWatch);
+
+const expensiveWatches = ripCurlWatches.filter((watch) => watch.price > 250);
+
+const totalPrices = ripCurlWatches.reduce(
+  (total, watch) => total + watch.price,
+  0
+);
+const averagePrice = totalPrices / ripCurlWatches.length;
+
+alert("Bienvenido a la tienda de relojes Rip Curl.");
+
+const userChoice = prompt(
+  "¿Qué desea hacer?\n\n1. Ver todos los relojes Rip Curl\n2. Ver relojes caros\n3. Calcular el precio promedio\n\nPor favor, ingrese el número correspondiente:"
+);
+
+if (userChoice === "1") {
+  let watchesList = "Lista de relojes Rip Curl:\n";
+  ripCurlWatches.forEach((watch) => {
+    watchesList += `ID: ${watch.id}, Nombre: ${watch.name}, Precio: $${watch.price}\n`;
+  });
+  alert(watchesList);
+} else if (userChoice === "2") {
+  let expensiveList = "Relojes caros (precio superior a $250):\n";
+  expensiveWatches.forEach((watch) => {
+    expensiveList += `Nombre: ${watch.name}, Precio: $${watch.price}\n`;
+  });
+  alert(expensiveList);
+} else if (userChoice === "3") {
+  alert(
+    `El precio promedio de los relojes Rip Curl es: $${averagePrice.toFixed(2)}`
+  );
+} else {
+  alert("Opción no válida. Por favor, seleccione una opción válida.");
+}
+
+const canvas = document.getElementById("precio-relojes-chart");
+
+const preciosRelojes = ripCurlWatches.map((watch) => watch.price);
+
+const ctx = canvas.getContext("2d");
+const precioRelojesChart = new Chart(ctx, {
+  type: "pie",
+  data: {
+    labels: ripCurlWatches.map((watch) => watch.name),
+    datasets: [
+      {
+        data: preciosRelojes,
+        backgroundColor: [
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 2)",
+          "rgba(25, 206, 86, 0.6)",
+          "rgba(75, 12, 190, 0.6)",
+          "rgba(500, 19, 13, 0.6)",
+          "rgba(75, 300, 10, 0.6)",
+          "rgba(95, 50, 100, 0.6)",
+          "rgba(5, 92, 192, 0.6)",
+          "rgba(75, 350, 175, 0.6)",
+        ],
+      },
+    ],
+  },
+  options: {
+    responsive: false,
+  },
+});
