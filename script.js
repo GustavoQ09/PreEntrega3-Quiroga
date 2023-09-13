@@ -25,6 +25,13 @@ document.addEventListener("DOMContentLoaded", function () {
       sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
 
       displayCartItems();
+
+      Swal.fire({
+        title: "Agregado al carrito",
+        text: `Se ha agregado "${productTitle}" al carrito.`,
+        icon: "success",
+        confirmButtonText: "OK",
+      });
     });
   });
 
@@ -137,7 +144,7 @@ const ripCurlWatches = [
 ];
 
 const newWatch = {
-  id: 4,
+  id: 10,
   name: "Rip Curl Classic Black",
   price: 175,
 };
